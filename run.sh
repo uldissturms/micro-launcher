@@ -1,4 +1,6 @@
 .paket/paket.bootstrapper.exe
 rm paket.lock
 .paket/paket.exe update
-find packages -name "*.exe" -exec start {} \;
+for subdir in packages/*; do
+    (cd "$subdir"; echo "Running: ${PWD##*/}"; ./run.sh)
+done
