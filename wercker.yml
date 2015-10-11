@@ -12,7 +12,7 @@ build:
         sudo apt-get install -y mono-devel 
     - script:
       name: install git
-      code: sudo apt-get install git
+      code: sudo apt-get install -y git
     - script:
       name: install bats
       code: |
