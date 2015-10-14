@@ -1,4 +1,22 @@
 #!/bin/bash
+
+# parse arguments passed in
+while [[ $# > 1 ]]
+do
+  key="$1"
+
+  case $key in
+    -e|--exclude)
+      EXCLUDE="$2"
+      shift # past argument
+      ;;
+    *)
+      # unknown option
+      ;;
+  esac
+  shift # past argument or value
+done
+
 if test "$OS" = "Windows_NT"
 then
   # use .Net
@@ -13,5 +31,12 @@ else
 fi
 
 for subdir in packages/*; do
-    (cd "$subdir"; echo "Running: ${PWD##*/}"; ./run.sh)
+  service=${subdir##*/}
+  if [[ "$service" == *$EXCLUDE* ]]
+  then
+    echo "Skipping: $service"
+  else
+    echo "Running: $service"
+    (cd "$subdir"; . ./run.sh)
+  fi
 done
