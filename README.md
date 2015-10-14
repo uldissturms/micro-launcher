@@ -27,7 +27,17 @@ Create `run.sh` script in root folder that is resposible for starting service. H
 ```bash
 start bin/*.exe # starting .net application from shell
 ```
-
+```bash
+start cmd //c run.bat
+echo "Warm up application"
+curl -vo nul http://localhost:8080/
+# cat run.bat
+# SET current_dir=%~dp0
+# "C:\Program Files (x86)\IIS Express\iisexpress.exe" /path:"%current_dir:~0,-1%" /port:8080
+```
+```bash
+powershell -ExecutionPolicy ByPass -File deploy.ps1
+```
 [hello-world] (https://github.com/uldissturms/hello-world) repo will contain various applications to demonstarate ways of starting a micro service
 
 ## License
