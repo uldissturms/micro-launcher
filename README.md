@@ -13,6 +13,9 @@ Microservices launcher for .NET applications based on paket
 
 micro-launcher is based on [paket] (https://github.com/fsprojects/Paket) - package dependency manager for .NET and mono and its intent is to stay as minimal and plaform agnostic as possible (support *nix and Windows)
 
+Arguments:
+1. --exclude <service-name> to exclude service from running (example: ```./run.sh --exclude hello-world```)
+
 ### How it works
 
 1. Restores packages

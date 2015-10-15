@@ -1,5 +1,6 @@
 #!/bin/bash
 
+(
 # parse arguments passed in
 while [[ $# > 1 ]]
 do
@@ -32,7 +33,7 @@ fi
 
 for subdir in packages/*; do
   service=${subdir##*/}
-  if [[ "$service" == *$EXCLUDE* ]]
+  if [[ ! -z "$EXCLUDE" ]] && [[ "$service" == *$EXCLUDE* ]]
   then
     echo "Skipping: $service"
   else
@@ -40,3 +41,4 @@ for subdir in packages/*; do
     (cd "$subdir"; . ./run.sh)
   fi
 done
+)
