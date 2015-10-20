@@ -1,16 +1,18 @@
 #!/usr/bin/env bats
 
+teardown() {
+  rm -rf ./packages
+}
+
 @test "should install services" {
-    command rm -rf ./packages  
+  run . ./run.sh
 
-    run . ./run.sh
-
-    [ "$status" -eq 0 ]
-    ls packages | grep hello-world-fsharp
+  [ "$status" -eq 0 ]
+  ls packages | grep hello-world-fsharp
 }
 
 @test "should run services" {
-    run . ./run.sh
+  run . ./run.sh
 
-    ps aux | grep Program.exe
+  ps aux | grep Program.exe
 }

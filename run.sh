@@ -1,5 +1,3 @@
-#!/bin/bash
-
 (
 # parse arguments passed in
 while [[ $# > 1 ]]
