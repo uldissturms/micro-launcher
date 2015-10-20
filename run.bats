@@ -5,6 +5,7 @@ setup() {
 }
 
 teardown() {
+  pkill mono
   rm -rf ./packages
 }
 
