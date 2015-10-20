@@ -20,12 +20,12 @@ if test "$OS" = "Windows_NT"
 then
   # use .Net
   .paket/paket.bootstrapper.exe
-  rm paket.lock
+  rm -f paket.lock
   .paket/paket.exe update
 else
   # use mono
   mono .paket/paket.bootstrapper.exe
-  rm paket.lock
+  rm -f paket.lock
   mono .paket/paket.exe update
 fi
 
