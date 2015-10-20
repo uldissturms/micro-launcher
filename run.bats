@@ -1,5 +1,9 @@
 #!/usr/bin/env bats
 
+setup() {
+  cp paket.dependencies.sample paket.dependencies
+}
+
 teardown() {
   rm -rf ./packages
 }
