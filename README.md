@@ -2,6 +2,8 @@
 
 Microservices launcher for .NET applications based on paket
 
+[![wercker status](https://app.wercker.com/status/56ebdc3eee27ca9a1525ff478f6c7ac8/s/master "wercker status")](https://app.wercker.com/project/bykey/56ebdc3eee27ca9a1525ff478f6c7ac8)
+
 ## Getting started
 
 1. Clone repository
@@ -13,8 +15,8 @@ Microservices launcher for .NET applications based on paket
 
 micro-launcher is based on [paket] (https://github.com/fsprojects/Paket) - package dependency manager for .NET and mono and its intent is to stay as minimal and plaform agnostic as possible (support *nix and Windows)
 
-Arguments:
-1. --exclude <service-name> to exclude service from running (example: ```./run.sh --exclude hello-world```)
+### Arguments:
+- --exclude or -e <service-name> to exclude service from running (example: ```./run.sh --exclude hello-world```)
 
 ### How it works
 
@@ -42,6 +44,9 @@ curl -vo nul http://localhost:8080/
 powershell -ExecutionPolicy ByPass -File deploy.ps1
 ```
 [hello-world] (https://github.com/uldissturms/hello-world) repo will contain various applications to demonstarate ways of starting a micro service
+
+### Tests
+Written using bats testing framework, to run them locally execute: ```bats run.bats```
 
 ## License
 
