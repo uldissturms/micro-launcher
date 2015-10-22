@@ -9,6 +9,10 @@ do
       EXCLUDE="$2"
       shift # past argument
       ;;
+    -i|--include)
+      INCLUDE="$2"
+      shift # past argument
+      ;;
     *)
       # unknown option
       ;;
@@ -29,9 +33,14 @@ else
   mono .paket/paket.exe update
 fi
 
+echo "Including $INCLUDE"
+
 for subdir in packages/*; do
   service=${subdir##*/}
   if [[ ! -z "$EXCLUDE" ]] && [[ "$service" == *$EXCLUDE* ]]
+  then
+    echo "Skipping: $service"
+  elif [[ ! -z "$INCLUDE" ]] && [[ "$service" != *$INCLUDE* ]]
   then
     echo "Skipping: $service"
   else
