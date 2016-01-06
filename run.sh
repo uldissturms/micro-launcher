@@ -1,15 +1,23 @@
-rm -f paket.lock
-
-if test "$OS" = "Windows_NT"
-then
-  # use .Net
-  .paket/paket.bootstrapper.exe
-  .paket/paket.exe update
-else
-  # use mono
-  mono .paket/paket.bootstrapper.exe
-  mono .paket/paket.exe update
-fi
+./restore.sh
 
 args=$@
-ls packages | xargs -n 1 -P 10 -I % bash -c "./run-service.sh % $args"
+parallel=1
+
+# parse arguments passed in
+while [[ $# > 1 ]]
+do
+  key="$1"
+
+  case $key in
+    -p|--parallel)
+      parallel="$2"
+      shift # past argument
+      ;;
+    *)
+      # unknown option
+      ;;
+  esac
+  shift # past argument or value
+done
+
+ls packages | xargs -n 1 -P $parallel -I % bash -c "./run-service.sh % $args"
