@@ -18,6 +18,7 @@ micro-launcher is based on [paket] (https://github.com/fsprojects/Paket) - packa
 ### Arguments:
 - --exclude or -e <service-name> to exclude service from running (example: ```./run.sh --exclude hello-world-fsharp```)
 - --include or -i <service-name> to run specific services (example: ```./run.sh --include hello-world-nodejs```)
+- --parallel or -p <threads> to launch services in parallel (example: ```./run.sh --parallel 10```)
 
 ### How it works
 
