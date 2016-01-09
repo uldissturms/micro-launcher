@@ -1,4 +1,4 @@
-./restore.sh
+. ./restore.sh
 
 args=$@
 parallel=1
