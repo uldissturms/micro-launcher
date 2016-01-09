@@ -2,3 +2,6 @@
 .paket/paket.exe
 paket.lock
 paket.dependencies
+/_builds
+/_projects
+/_steps

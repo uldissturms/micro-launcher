@@ -49,6 +49,7 @@ powershell -ExecutionPolicy ByPass -File deploy.ps1
 
 ### Tests
 Written using bats testing framework, to run them locally execute: ```bats run.bats```
+To run tests in CI like enviroment download wercker-cli and execute: ```wercker build``` locally
 
 ## License
 
