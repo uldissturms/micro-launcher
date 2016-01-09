@@ -1,11 +1,16 @@
-box: nodesource/jessie
+box: nodesource/node
 build:
   steps:
     - script:
       name: install mono
       code : |
-        sudo apt-get update
-        sudo apt-get install -y mono-complete
+       echo 'deb http://download.opensuse.org/repositories/home:/tpokorra:/mono/Debian_8.0/ /' >> /etc/apt/sources.list.d/mono-opt.list
+        apt-get update
+        apt-get install mono-opt -y --force-yes
+        . /opt/mono/env.sh
+    - script:
+      name: import mono certificates
+      code: mozroots --import --sync
     - script:
       name: install git
       code: sudo apt-get install -y git
