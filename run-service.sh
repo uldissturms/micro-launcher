@@ -1,9 +1,15 @@
 function match {
-  if echo $1 | grep -i $2 > /dev/null ; then
-    return 0
-  else
-    return 1
-  fi
+  left=$1
+  right=$2
+
+  for keyword in $(echo $right | tr "," "\n")
+  do
+    if echo $left | grep -i $keyword > /dev/null ; then
+      return 0
+    fi
+  done
+
+  return 1
 }
 
 (

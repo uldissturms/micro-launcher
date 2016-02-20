@@ -20,6 +20,8 @@ micro-launcher is based on [paket] (https://github.com/fsprojects/Paket) - packa
 - --include or -i <service-name> to run specific services (example: ```./run.sh --include hello-world-nodejs```)
 - --parallel or -p <threads> to launch services in parallel (example: ```./run.sh --parallel 10```)
 
+--include and --exclude are case-insensitive and support a comma-separated list
+
 ### How it works
 
 1. Restores packages
