@@ -1,3 +1,11 @@
+function match {
+  if echo $1 | grep -i $2 > /dev/null ; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 (
   service=$1
   # parse arguments passed in
@@ -21,10 +29,10 @@
     shift # past argument or value
   done
 
-  if [[ ! -z "$EXCLUDE" ]] && [[ "$service" == *$EXCLUDE* ]]
+  if [[ ! -z "$EXCLUDE" ]] && match $service $EXCLUDE
   then
     echo "Skipping: $service"
-  elif [[ ! -z "$INCLUDE" ]] && [[ "$service" != *$INCLUDE* ]]
+  elif [[ ! -z "$INCLUDE" ]] && ! match $service $INCLUDE
   then
     echo "Skipping: $service"
   elif [[ ! -d "packages/$service" ]]

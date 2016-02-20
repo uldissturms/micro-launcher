@@ -46,7 +46,7 @@ node-app-running() {
 }
 
 @test "doesn't start excluded services" {
-  . ./run.sh --exclude hello-world-fs
+  . ./run.sh --exclude hello-world-FS
 
   node-app-running
   fsharp-app-not-running
