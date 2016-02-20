@@ -9,7 +9,7 @@ teardown() {
   pkill node || true
 }
 
-@test "should install services" {
+@test "installs services" {
   rm -rf ./packages
 
   . ./run.sh
@@ -31,21 +31,28 @@ node-app-running() {
   curl localhost:3000
 }
 
-@test "should start hello world web apps" {
+@test "starts all services when no arguments provided" {
   . ./run.sh
 
   fsharp-app-running
   node-app-running
 }
 
-@test "should not start excluded services" {
+@test "starts all services in parallel" {
+  . ./run.sh --parallel 2
+
+  fsharp-app-running
+  node-app-running
+}
+
+@test "doesn't start excluded services" {
   . ./run.sh --exclude hello-world-fs
 
   node-app-running
   fsharp-app-not-running
 }
 
-@test "should start only included services" {
+@test "starts only included services" {
   . ./run.sh --include hello-world-node
 
   node-app-running
