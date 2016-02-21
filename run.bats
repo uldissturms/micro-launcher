@@ -17,24 +17,29 @@ teardown() {
   ls packages | grep hello-world-fsharp
 }
 
+app-running() {
+  for i in `seq 1 10`
+  do
+    if curl $1; then return 0; fi
+    sleep 0.1
+  done
+  return 1
+}
+
 fsharp-app-running() {
-  sleep 3
-  curl localhost:8083
+  app-running localhost:8083
 }
 
 fsharp-app-not-running() {
-  sleep 3
-  ! curl localhost:8083
+  ! app-running localhost:8083
 }
 
 node-app-running() {
-  sleep 3
-  curl localhost:3000
+  app-running localhost:3000
 }
 
 node-app-not-running() {
-  sleep 3
-  ! curl localhost:3000
+  ! app-running localhost:3000
 }
 
 @test "starts all services when no arguments provided" {
