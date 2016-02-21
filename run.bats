@@ -31,7 +31,7 @@ fsharp-app-running() {
 }
 
 fsharp-app-not-running() {
-  ! app-running localhost:8083
+  ! fsharp-app-running
 }
 
 node-app-running() {
@@ -39,7 +39,7 @@ node-app-running() {
 }
 
 node-app-not-running() {
-  ! app-running localhost:3000
+  ! node-app-running
 }
 
 @test "starts all services when no arguments provided" {
